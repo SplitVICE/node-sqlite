@@ -1,3 +1,5 @@
+[![N|Solid](https://dl.dropboxusercontent.com/s/oy06v7r8d871cr8/splitvice-banner.png?dl=0)](http://split-vice.com)
+
 # Node SQLite
 
 Simple class API to execute SQLite sentences.
