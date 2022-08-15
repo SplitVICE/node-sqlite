@@ -1,6 +1,6 @@
 /********************************************************
 Custom API to access SQLite database and handle data.
-Version 1.0.0.
+Version 1.1.0.
 NPM module: better-sqlite3 version 7.6.2.
 Copyright (c) 2022, SPLIT VICE - MIT.
 ********************************************************/
@@ -27,6 +27,22 @@ module.exports = class SQLite {
         const stmt = this.core.prepare(_query);
         const info = stmt.run();
         return info;
+    }
+
+    /**
+     * Executes a script file in file system.
+     * Format of the SQL script file must be .sql.
+     * @param {String} filePath path of the script file.
+     * @returns {String} Example output: Database {
+                                            name: './database.db',
+                                            open: true,
+                                            inTransaction: false,
+                                            readonly: false,
+                                            memory: false
+                                        }
+     */
+    QueryFromSqlFile(filePath) {
+        return this.core.exec(require('fs').readFileSync(filePath, 'utf8'));
     }
 
     /**

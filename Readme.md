@@ -22,7 +22,7 @@ const sqlite = new SQLiteManager({
 });
 ```
 
-Typical CRUD examples:
+# Typical CRUD examples:
 
 ```javascript
 // Drops the user table if exists.
@@ -58,8 +58,46 @@ const selectUser = sqlite.Select(`SELECT * FROM users WHERE id = 1`);
 console.log(selectUser); // => []
 ```
 
-Check if database exists:
+# Check if database exists:
 
 ```javascript
 console.log(sqlite.DatabaseFileExists()); // true. Database file exists.
+```
+
+# Execute a long string SQL query:
+
+```sql
+-- Taking into consideration there is a file called cats.sql with the following SQL string:
+
+-- Drops cat table.
+DROP TABLE IF EXISTS cats;
+
+-- Creates cat table.
+CREATE TABLE CAT (
+  ID INTEGER PRIMARY KEY UNIQUE,
+  NAME TEXT NOT NULL,
+  BIRTH_DATE TEXT NOT NULL
+);
+
+-- Inserts some cats into the table.
+INSERT INTO CAT (NAME, BIRTH_DATE) VALUES ('Garfield', '1979-01-01');
+INSERT INTO CAT (NAME, BIRTH_DATE) VALUES ('Fuzzy', '1980-01-01');
+INSERT INTO CAT (NAME, BIRTH_DATE) VALUES ('Scratchy', '1981-01-01');
+INSERT INTO CAT (NAME, BIRTH_DATE) VALUES ('Tom', '1982-01-01');
+
+```
+
+```javascript
+// Deletes cats table if exists, creates cats table and inserts data
+// from an existing .sql script file.
+const cats = sqlite.QueryFromSqlFile('./cats.sql'); // => file must end in .sql
+console.log(cats); /* =>
+Database {
+    name: './database.db',
+    open: true,
+    inTransaction: false,
+    readonly: false,
+    memory: false
+  }
+*/
 ```

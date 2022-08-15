@@ -39,3 +39,18 @@ console.log(deleteUser); // => { changes: 1, lastInsertRowid: 1 }
 //  Checks if the user is deleted.
 const selectUser = sqlite.Select(`SELECT * FROM users WHERE id = 1`);
 console.log(selectUser); // => []
+
+// ======================================================================================================
+
+// Deletes cats table if exists, creates cats table and inserts data
+// from an existing .sql script file.
+const cats = sqlite.QueryFromSqlFile('./cats.sql'); // => file must end in .sql
+console.log(cats); /* =>
+Database {
+    name: './database.db',
+    open: true,
+    inTransaction: false,
+    readonly: false,
+    memory: false
+  }
+*/
