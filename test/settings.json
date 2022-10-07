@@ -1,0 +1,7 @@
+{
+    "DeleteTestsDatabaseOnTestFinish": true,
+    "TestLoopSettings": {
+        "DelaySeconds": 0,
+        "Pause": false
+    }
+}

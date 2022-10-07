@@ -1,15 +1,19 @@
 {
   "name": "node-sqlite",
-  "version": "1.1.0",
-  "description": "",
+  "version": "2.0.0",
+  "description": "JavaScript class to handle SQLite3 databases using better-sqlite3 module.",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "test": "mocha test/index.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": ["sqlite", "sqlite3", "database", "sql", "better-sqlite3"],
+  "author": "SPLIT VICE",
+  "license": "MIT",
   "dependencies": {
-    "better-sqlite3": "^7.6.2"
+    "better-sqlite3": "7.6.2"
+  },
+  "devDependencies": {
+    "mocha": "10.0.0"
   }
 }
